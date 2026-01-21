@@ -105,6 +105,79 @@ const wordAssociationStarters = [
   "Spaceship",
 ];
 
+const writingTools = [
+  {
+    id: "joterie",
+    name: "Joterie",
+    tagline: "Think Fast",
+    description: "Rapid brainstorming with timed sprints. Capture raw ideas before they escape, then curate the best ones.",
+    features: ["Timed Sprints", "Curation", "Archives"],
+    href: "/writing-tools/Joterie.html",
+    color: "#fae84f",
+    icon: "⚡",
+  },
+  {
+    id: "synax",
+    name: "Synax",
+    tagline: "Creative Engine",
+    description: "AI-powered prompt generation. Discover unexpected word combinations to spark new creative directions.",
+    features: ["Random Prompts", "Rhyme Finder", "Context Mode"],
+    href: "/writing-tools/Synax.html",
+    color: "#da70d6",
+    icon: "✨",
+  },
+  {
+    id: "beathive",
+    name: "BeatHive",
+    tagline: "Story Architect",
+    description: "Map your narrative on an infinite hexagonal canvas. Visualize story beats and their connections.",
+    features: ["Hex Canvas", "Beat Types", "Cloud Sync"],
+    href: "/writing-tools/BeatHive.html",
+    color: "#fd19c8",
+    icon: "⬡",
+  },
+  {
+    id: "wribbon",
+    name: "Wribbon",
+    tagline: "Flow State Writing",
+    description: "Minimalist, distraction-free drafting. Zen mode hides the UI while you write, keeping focus on the words.",
+    features: ["Zen Mode", "Word Goals", "Timer"],
+    href: "/writing-tools/Wribbon.html",
+    color: "#fd19c8",
+    icon: "✎",
+  },
+  {
+    id: "courius",
+    name: "Courius",
+    tagline: "Screenwriter",
+    description: "Professional screenplay formatting. Industry-standard elements with automatic styling and FDX export.",
+    features: ["FDX Export", "Auto Format", "Title Pages"],
+    href: "/writing-tools/Courius.html",
+    color: "#fae84f",
+    icon: "🎬",
+  },
+  {
+    id: "flowstate",
+    name: "FlowState",
+    tagline: "Writing Game",
+    description: "Gamified writing sessions with flow mechanics. Build combos, earn sparks, and maintain your writing momentum.",
+    features: ["Flow Meter", "Combos", "Sparks"],
+    href: "/writing-tools/FlowState.html",
+    color: "#fd19c8",
+    icon: "🔥",
+  },
+  {
+    id: "withernaught",
+    name: "WitherNaught",
+    tagline: "Cultivate Your Mind",
+    description: "A gamified writing garden where your words bloom into a living ecosystem. Keep writing or watch your garden freeze.",
+    features: ["Frost System", "Zone Progression", "Ambient Audio"],
+    href: "/writing-tools/WitherNaught.html",
+    color: "#da70d6",
+    icon: "🌱",
+  },
+];
+
 function randomItem<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -256,6 +329,63 @@ export default function ToolsPage() {
               )}
             </MicroCard>
           </motion.div>
+        ))}
+      </div>
+
+      {/* Writing Tools Section */}
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-20 mb-4 text-4xl font-bold tracking-tight"
+      >
+        Writing Tools
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="mb-12 text-lg text-foreground/70"
+      >
+        A complete writer&apos;s toolkit for brainstorming, structuring, drafting, and formatting your creative work.
+      </motion.p>
+
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {writingTools.map((tool, index) => (
+          <motion.a
+            key={tool.id}
+            href={tool.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="block"
+          >
+            <MicroCard className="p-6 h-full hover:border-pink transition-colors">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white text-xl"
+                style={{ backgroundColor: tool.color }}
+              >
+                {tool.icon}
+              </div>
+              <h3 className="text-2xl font-bold mb-1">{tool.name}</h3>
+              <p className="text-pink italic mb-3">{tool.tagline}</p>
+              <p className="text-foreground/70 mb-4">{tool.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {tool.features.map((feature) => (
+                  <span
+                    key={feature}
+                    className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-foreground/10 text-foreground/60"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </MicroCard>
+          </motion.a>
         ))}
       </div>
     </main>
